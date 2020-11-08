@@ -1,0 +1,22 @@
+body{
+  background-color:AliceBlue;
+}
+h1.header{
+  font-weight:bold;
+  font-size:21px;
+  font-family:"黑体",sans-serif;
+  color:#86aace;
+  opacity:1;
+  margin:0 auto;
+  text-align:center;
+}
+div.header{
+  border-style:solid;
+  border-radius:15px;
+  border-width:2px;
+  padding:12px 15px;
+  margin:10px 5px;
+  
+  border-color:rgba(10,10,10,0.3);
+  background-color:rgba(255,249,249,0.5);
+  }
