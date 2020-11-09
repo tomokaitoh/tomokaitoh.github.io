@@ -12,8 +12,8 @@ h1.header{
 }
 div.header{
   border-style:solid;
-  border-radius:15px;
-  border-width:2px;
+  border-radius:12px;
+  border-width:1px;
   padding:12px 15px;
   margin:10px 5px;
   
