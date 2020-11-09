@@ -18,7 +18,7 @@
     </label>
     <label class="week">
       第
-      <select class="week">
+      <select class="week" id="week">
         <option value="0">1</option>
         <option value=" 1 "> 2 </option>
         <option value=" 2 "> 3 </option>
@@ -44,27 +44,53 @@
     </label>
     <br/>
     <label  class="weekday_select" >
-      <label><input type="radio" value="0" name="weekday"/>星期一</label>
-      <label><input type="radio" value="1" name="weekday"/>星期二</label>
-      <label><input type="radio" value="2" name="weekday"/>星期三</label>
+      <label><input type="radio" value="0" onclick="displayData()" name="weekday"/>星期一</label>
+      <label><input type="radio" value="1" onclick="displayData()" name="weekday"/>星期二</label>
+      <label><input type="radio" value="2" onclick="displayData()" name="weekday"/>星期三</label>
       <br/>
-      <label><input type="radio" value="3" name="weekday"/>星期四</label>
-      <label><input type="radio" value="4" name="weekday"/>星期五</label>
-      <label><input type="radio" value="5" name="weekday"/>星期六</label>
-      <label><input type="radio" value="6" name="weekday"/>星期天</label>  
+      <label><input type="radio" value="3" onclick="displayData()" name="weekday"/>星期四</label>
+      <label><input type="radio" value="4" onclick="displayData()" name="weekday"/>星期五</label>
+      <label><input type="radio" value="5" onclick="displayData()" name="weekday"/>星期六</label>
+      <label><input type="radio" value="6" onclick="displayData()" name="weekday"/>星期天</label>  
     </label>
       <br/>
   <div id="content">
 
   </div>
   <script type="text/javascript">
-    function getData(week,week,day,n){
-        var url="./data/emptyClassrooms/H"+week+"/week"+week+"/day"+day+"/"+n+".json";
+    function getData(building,week,day,n){
+        var url="./data/emptyClassrooms/H"+building+"/week"+week+"/day"+day+"/"+n+".json";
+        var result=[];
         $.getJSON(url,function(data){
           for(var i=0;i<data.length;i++){
-            document.getElementById('content').innerText+=""+data[i];
+            result[i]=data[i];
           }
         });
+        return result;
+      }
+      function displayData(){
+        var day,building=1,week=1;
+        var str,url;
+        var content=document.getElementById("content");
+        weekday_select=document.getElementsByName("weekday");
+        for(let i=0;i<weekday_select.length;i++){
+          if(weekday_select[i].cheaked){
+            day=weekday_select.value;
+          }
+        }
+        week=document.getElementsByName("week").value;
+        building_select=document.getElementsByName("building");
+        for(let i=0;i<building_select.length;i++){
+          if(building_select[i].cheaked){
+            building=building_select.value;
+          }
+        }
+        content.innerHTML=null;
+        for(let i=0;i<=11;i++){
+          content.innerHTML+='<p class="content">第'+'<b class="content">'+i+'</b>节课 :'+getData(building,week,day,i)+'</p>'
+        }
+
+
       }
   </script> 
   </body>
