@@ -73,21 +73,21 @@
         var str,url;
         var content=document.getElementById("content");
         weekday_select=document.getElementsByName("weekday");
-        for(let i=0;i<weekday_select.length;i++){
-          if(weekday_select[i].cheaked){
-            day=weekday_select.value;
+        for(i=0;i<weekday_select.length;i++){
+          if(weekday_select[i].checked==true){
+            day=weekday_select[i].value;
           }
         }
-        week=document.getElementsByName("week").value;
+        week=document.getElementById("week").value;
         building_select=document.getElementsByName("building");
-        for(let i=0;i<building_select.length;i++){
-          if(building_select[i].cheaked){
-            building=building_select.value;
+        for(i=0;i<building_select.length;i++){
+          if(building_select[i].checked){
+            building=building_select[i].value;
           }
         }
         content.innerHTML=null;
-        for(let i=0;i<=11;i++){
-          content.innerHTML+='<p class="content">第'+'<b class="content">'+i+'</b>节课 :'+getData(building,week,day,i)+'</p>'
+        for(i=0;i<=11;i++){
+          content.innerHTML+='<p class="content">'+day+' H'+building+' '+week+'第'+'<b class="content">'+(i+1)+'</b>节课 :'+getData(building,week,day,i)+'</p>'
         }
 
 
