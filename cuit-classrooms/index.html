@@ -13,17 +13,13 @@
    <div>
     <button onclick="getData(1,1,1,1)">按钮</button>
    </div>
+   <div id="content"></div>
     <script type="text/javascript">
       function getData(building,week,day,n){
         var url="./data/emptyClassrooms/H"+building+"/week"+week+"/day"+day+"/"+n+".json";
-        $.getJSON('1.json',function(data){
-          for(var i=0;i<data.length;i++){
-            alert(data[i]+",");
-          }
-        });
         $.getJSON(url,function(data){
           for(var i=0;i<data.length;i++){
-            alert(data[i]+",");
+            document.getElementById('content').innerText+=""+data[i];
           }
         });
       }
