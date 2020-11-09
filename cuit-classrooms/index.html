@@ -1,6 +1,6 @@
 <html>
  <head> 
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalabel=no"> 
   <title>成信大教室信息查询系统</title> 
   <link rel="stylesheet" type="text/css" href="./css/style.css"> 
   <script src="js/jq.js"></script> 
@@ -9,20 +9,63 @@
  <body id="v1"> 
   <div class="header">
   <h1 class="header">成都信息工程大学<br/><small>教室信息查询</small></h1>
-   </div>
-   <div>
-    <button onclick="getData(1,1,1,1)">按钮</button>
-   </div>
-   <div id="content"></div>
-    <script type="text/javascript">
-      function getData(building,week,day,n){
-        var url="./data/emptyClassrooms/H"+building+"/week"+week+"/day"+day+"/"+n+".json";
+  </div>
+
+    <label  class="buildings">
+    <label><input type="radio" value="1"  name="building"/>H1</label>
+    <label><input type="radio" value="2"  name="building"/>H2</label>
+    <label><input type="radio" value="4"  name="building"/>H4</label>
+    </label>
+    <label class="week">
+      第
+      <select class="week">
+        <option value="0">1</option>
+        <option value=" 1 "> 2 </option>
+        <option value=" 2 "> 3 </option>
+        <option value=" 3 "> 4 </option>
+        <option value=" 4 "> 5 </option>
+        <option value=" 5 "> 6 </option>
+        <option value=" 6 "> 7 </option>
+        <option value=" 7 "> 8 </option>
+        <option value=" 8 "> 9 </option>
+        <option value=" 9 "> 10 </option>
+        <option value=" 10 "> 11 </option>
+        <option value=" 11 "> 12 </option>
+        <option value=" 12 "> 13 </option>
+        <option value=" 13 "> 14 </option>
+        <option value=" 14 "> 15 </option>
+        <option value=" 15 "> 16 </option>
+        <option value=" 16 "> 17 </option>
+        <option value=" 17 "> 18 </option>
+        <option value=" 18 "> 19 </option>
+        <option value=" 19 "> 20 </option>
+      </select>
+      周
+    </label>
+    <br/>
+    <label  class="weekday_select" >
+      <label><input type="radio" value="0" name="weekday"/>星期一</label>
+      <label><input type="radio" value="1" name="weekday"/>星期二</label>
+      <label><input type="radio" value="2" name="weekday"/>星期三</label>
+      <br/>
+      <label><input type="radio" value="3" name="weekday"/>星期四</label>
+      <label><input type="radio" value="4" name="weekday"/>星期五</label>
+      <label><input type="radio" value="5" name="weekday"/>星期六</label>
+      <label><input type="radio" value="6" name="weekday"/>星期天</label>  
+    </label>
+      <br/>
+  <div id="content">
+
+  </div>
+  <script type="text/javascript">
+    function getData(week,week,day,n){
+        var url="./data/emptyClassrooms/H"+week+"/week"+week+"/day"+day+"/"+n+".json";
         $.getJSON(url,function(data){
           for(var i=0;i<data.length;i++){
             document.getElementById('content').innerText+=""+data[i];
           }
         });
       }
-    </script> 
+  </script> 
   </body>
 </html>

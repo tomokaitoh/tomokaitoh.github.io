@@ -1,5 +1,5 @@
 body{
-  background-color:AliceBlue;
+  background-color:aliceblue;
 }
 h1.header{
   font-weight:bold;
@@ -10,13 +10,31 @@ h1.header{
   margin:0 auto;
   text-align:center;
 }
+
 div.header{
+  position: relative;
   border-style:solid;
   border-radius:12px;
   border-width:1px;
   padding:12px 15px;
-  margin:10px 5px;
-  
+  margin:2px 5px;
   border-color:rgba(10,10,10,0.3);
   background-color:rgba(255,249,249,0.5);
+  }
+.weekday_select,.buildings,label.week{
+    display: inline-block;
+    position: relative;
+    border-style:solid;
+    border-radius:12px;
+    border-width:1px;
+    padding:10px 15px;
+    margin:2px 5px;
+    border-color:rgba(10,10,10,0.3);
+    background-color:rgba(255,249,249,0.5);
+  }
+  select.week{
+    font-weight:bold;
+    font-size:14px;
+    font-family:"黑体",sans-serif;
+    color:#86aace;
   }
