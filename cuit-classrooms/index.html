@@ -1,14 +1,14 @@
 <html>
  <head> 
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalabel=no"> 
-  <title>成信大教室信息查询系统</title> 
+  <title>成信大教室空信息查询系统</title> 
   <link rel="stylesheet" type="text/css" href="./css/style.css"> 
   <script src="js/jq.js"></script> 
   <meta http-equiv="Access-Control-Allow-Origin" content="*">
  </head> 
  <body id="v1"> 
   <div class="header">
-  <h1 class="header">成都信息工程大学<br/><small>教室信息查询</small></h1>
+  <h1 class="header">成都信息工程大学<br/><small>空教室信息查询</small></h1>
   </div>
 
     <label  class="buildings">
@@ -87,7 +87,7 @@
         }
         content.innerHTML=null;
         for(i=0;i<=11;i++){
-          content.innerHTML+='<p class="content">'+day+' H'+building+' '+week+'第'+'<b class="content">'+(i+1)+'</b>节课 :'+getData(building,week,day,i)+'</p>'
+          content.innerHTML+='<p class="content">'+'第'+'<b class="content">'+(i+1)+'</b>节课 :'+getData(building,week,day,i)+'</p>'
         }
 
 
