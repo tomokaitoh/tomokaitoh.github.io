@@ -20,25 +20,25 @@
       第
       <select class="week" id="week">
         <option value="0">1</option>
-        <option value=" 1 "> 2 </option>
-        <option value=" 2 "> 3 </option>
-        <option value=" 3 "> 4 </option>
-        <option value=" 4 "> 5 </option>
-        <option value=" 5 "> 6 </option>
-        <option value=" 6 "> 7 </option>
-        <option value=" 7 "> 8 </option>
-        <option value=" 8 "> 9 </option>
-        <option value=" 9 "> 10 </option>
-        <option value=" 10 "> 11 </option>
-        <option value=" 11 "> 12 </option>
-        <option value=" 12 "> 13 </option>
-        <option value=" 13 "> 14 </option>
-        <option value=" 14 "> 15 </option>
-        <option value=" 15 "> 16 </option>
-        <option value=" 16 "> 17 </option>
-        <option value=" 17 "> 18 </option>
-        <option value=" 18 "> 19 </option>
-        <option value=" 19 "> 20 </option>
+        <option value="1"> 2 </option>
+        <option value="2"> 3 </option>
+        <option value="3"> 4 </option>
+        <option value="4"> 5 </option>
+        <option value="5"> 6 </option>
+        <option value="6"> 7 </option>
+        <option value="7"> 8 </option>
+        <option value="8"> 9 </option>
+        <option value="9"> 10 </option>
+        <option value="10"> 11 </option>
+        <option value="11"> 12 </option>
+        <option value="12"> 13 </option>
+        <option value="13"> 14 </option>
+        <option value="14"> 15 </option>
+        <option value="15"> 16 </option>
+        <option value="16"> 17 </option>
+        <option value="17"> 18 </option>
+        <option value="18"> 19 </option>
+        <option value="19"> 20 </option>
       </select>
       周
     </label>
@@ -54,24 +54,23 @@
       <label><input type="radio" value="6" onclick="displayData()" name="weekday"/>星期天</label>  
     </label>
       <br/>
-  <div id="content">
-
-  </div>
+    <p id="c0" class='c'></p>
+    <p id="c1" class='c'></p>
+    <p id="c2" class='c'></p>
+    <p id="c3" class='c'></p>
+    <p id="c4" class='c'></p>
+    <p id="c5" class='c'></p>
+    <p id="c6" class='c'></p>
+    <p id="c7" class='c'></p>
   <script type="text/javascript">
-    function getData(building,week,day,n){
-        var url="./data/emptyClassrooms/H"+building+"/week"+week+"/day"+day+"/"+n+".json";
-        var result=[];
-        $.getJSON(url,function(data){
-          for(var i=0;i<data.length;i++){
-            result[i]=data[i];
-          }
-        });
-        return result;
-      }
+  
+  function sleep(d){
+    for(var t = Date.now();Date.now() - t <= d;);
+  }
       function displayData(){
-        var day,building=1,week=1;
-        var str,url;
-        var content=document.getElementById("content");
+        var day,building=1,week=1,i=0,j=0;
+        var str;
+        var url0="https://tomokaitoh.github.io/cuit-classrooms";
         weekday_select=document.getElementsByName("weekday");
         for(i=0;i<weekday_select.length;i++){
           if(weekday_select[i].checked==true){
@@ -85,12 +84,15 @@
             building=building_select[i].value;
           }
         }
-        content.innerHTML=null;
-        for(i=0;i<=11;i++){
-          content.innerHTML+='<p class="content">'+'第'+'<b class="content">'+(i+1)+'</b>节课 :'+getData(building,week,day,i)+'</p>'
+        var url=url0+"/data/emptyClassrooms/H"+building+"/week"+week+"/day"+day+"/";
+        //content.innerHTML=null;
+        //var datas=Array(8);
+        $.ajaxSetup({async:false});
+        for(i=0;i<8;i++){
+          $.getJSON(url+i+".json",function(data){
+            document.getElementById("c"+i).innerHTML='<p class="content">'+'第'+'<b class="content">'+(i+1)+'</b>节课:<br/>'+data+'</p>';
+        });
         }
-
-
       }
   </script> 
   </body>
