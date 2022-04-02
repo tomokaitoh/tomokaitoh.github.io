@@ -24,7 +24,6 @@ function toLogin(){
     document.getElementById("loginButton").style.display = "block";
     document.getElementById("loginTip").style.display = "";
     document.getElementById("registerTip").style.display = "none"; 
-
 }
 
 function toFindPassword(){
