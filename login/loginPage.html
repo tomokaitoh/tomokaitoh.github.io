@@ -2,35 +2,38 @@
 <html lang="ch">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/loginPage.css" type="text/css"/>
+    <script src="js/loginPage.js"></script>
+    <link rel="stylesheet" href="css/loginPage1.css" type="text/css"/>
     <title>Login page</title>
 </head>
 
-<body class="loginPage">
-    <div class="header">
-        <img class="logo" src="resources/logo.png"/>
-        <label class="title">Website Name Login Page</label>
+<body>
+    <div id="header">
+        <img id="header_logo" src="resources/logo.png"/>
+        <label id="header_title">Website Name Login Page</label>
     </div>
 
-    <div class="window">
+    <div id="window">
         <button class="smallButton red"></button>
         <button class="smallButton yellow"></button>
         <button class="smallButton green"></button>
-        <label class="window_title"><b>登录</b></label>
+        <label id="window_title"><b>登录</b></label>
         <br/>
-        <label class="window_lable" type="text" style="top: 21%;">用户名:</label>
-        <input style="top: 21%;"/>
+        <label class="window_lable">用户名:</label>
+        <input id="userName_input"/>
         <br/>
-        <label class="window_lable" type="text" style="top: 20%;">密码:</label>
-        <input type="password" style="top: 20%;"/>
-
-        <button class="floatButton" style="top:44%;left:80%;">登录</button>
+        <label class="window_lable">密码:</label>
+        <input id="password_input"/>
+        <br/>
+        <label class="window_lable">密码:</label>
+        <input id="password_input"/>
+        <button class="floatButton" type="button" onclick="login()" style="top:44%;left:80%;">登录</button>
     </div>
 
-    <p class="tip">
+    <p id="tip">
         还未注册或忘记密码?
-        <a href="http://baidu.com">注册</a>    
-        <a href="http://baidu.com">找回密码</a>
+        <a href="#" onclick="toRegister()">注册</a>
+        <a href="#" onclick="toFindPassword()">找回密码</a>
     </p>
 
 </body>

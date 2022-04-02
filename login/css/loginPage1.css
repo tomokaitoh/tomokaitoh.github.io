@@ -1,0 +1,155 @@
+:root{
+    --main_color: rgb(135, 181, 196);
+    --background_color: rgb(226, 226, 226);
+    --window_color: rgb(240, 240, 240);
+    --window_width: 36%;
+    --window_height:32%;
+    --window_pos_x: 50%;
+    --window_pos_y: 50%;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../resources/Roboto-Regular.ttf');
+}
+
+@keyframes startAni{
+    0% {opacity:0;transform: translate(0,1000px);}
+}
+
+ *{font-family: "SimHei" 'Roboto-Regular';}
+
+html,body{
+    overflow-x:hidden;
+    overflow-y:hidden;
+    height:100%;
+    margin: 0;
+    padding:0;
+}
+
+body{
+    background-color: var(--background_color);
+    min-width: 710px;
+    min-height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+div#header {
+    background-color: var(--main_color);
+    height: 25%;
+    margin:0 0 0 0;
+    box-shadow: 0 0 12px 4px rgb(185, 185, 185);
+}
+
+div#window {
+    animation: startAni 1.2s;
+    background-color: var(--window_color);
+    position: absolute;
+    width: var(--window_width);
+    height: var(--window_height);
+    min-width: 350px;
+    min-height: 200px;
+    top: calc(var(--window_pos_y) - var(--window_height) *0.5);    
+    left: calc(var(--window_pos_x) - var(--window_width) *0.5);
+    padding: 2px 2px 2px 5px;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .7s ease;
+}
+
+div#window:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    transition: all .7s ease;
+}
+
+
+button.smallButton {
+    margin: 0 1px 0 0;
+    width: 10px;
+    height: 12px;
+    border-radius: 65%;
+    border-width: 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+}
+button.smallButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+}
+button.red{background-color: rgb(254, 118, 110);}
+button.yellow{background-color: rgb(254,198, 76);}
+button.green{background-color: rgb(70, 208, 91);}
+
+#window_title{margin-left: 33%;font-size:15px;}
+
+.window_lable{
+    position: relative;
+    display:inline-block;
+    top:21%;
+    width: 25%;
+    margin:2% 5% 2% 1%;
+    text-align: right;
+    font-size: 14px;
+}
+
+input{
+    background-color: var(--background_color);
+    position: relative;
+    width: 40%;
+    height: 14%;
+    top:21%;
+    margin-bottom: 7%;
+    outline-style: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 7px 0px;
+    transition:all .2s ease;
+}
+
+input:hover{
+    box-shadow: rgba(136, 165, 191, 0.48) 0px 3px 13px 0px;
+    transition:all .2s ease;
+}
+
+
+.floatButton {
+    background: var(--main_color);
+    position: absolute;
+    align-items: center;
+    border: 0 solid #E2E8F0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
+    color: #1A202C;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#header_logo{
+    position: relative;
+    top: calc(35% - 50px);    
+    left: calc(50% - 50px);
+    width: 90px;
+    height: 90px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
+    border-radius: 20%;
+}
+
+#header_title{
+    position: relative;
+    top: calc(55% - 50px); 
+    left: calc(50% - 240px);
+    font-size: 25px;
+}
+
+p#tip{
+    animation: startAni 1.5s;
+    display: inline;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top:calc(var(--window_pos_y) + var(--window_height)*0.5 + 10px);
+    font-size: 13px;
+}
+ a {
+    color:red;
+    background-color: var(--main_color);
+}

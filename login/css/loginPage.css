@@ -1,105 +1,110 @@
-:root{
-    --main_color: rgb(135, 181, 196);
-    --background_color: rgb(226, 226, 226);
-    --window_color: rgb(240, 240, 240);
-    --window_width: 36%;
-    --window_height:32%;
-    --window_pos_x: 50%;
-    --window_pos_y: 50%;
+:root {
+    --color_main:rgb(135, 181, 196);
+    --color_background:rgb(226, 226, 226);
+    --color_window:rgb(236, 241, 240);
+
+    --window_width:30%;
 }
 
-@font-face {
-    font-family: 'Roboto-Regular';
-    src: url('../resources/Roboto-Regular.ttf');
-}
-
-@keyframes startAni{
-    0% {opacity:0;transform: translate(0,1000px);}
-}
-
- *{font-family: "SimHei" 'Roboto-Regular';}
-
-html,body{
-    overflow-x:hidden;
-    overflow-y:hidden;
-    height:100%;
+html {
+    height: 100%;
     margin: 0;
-    padding:0;
+    padding: 0;
+    overflow-x: hidden ;
+    overflow-y: hidden ;
 }
 
-body.loginPage {
-    background-color: var(--background_color);
-    min-width: 710px;
-    min-height: 600px;
+body{
+    background-color: var(--color_background);
+    height: 100%;
+    min-height: 700px;
+    min-width: 700px;
     margin: 0;
     padding: 0;
 }
 
-div.header {
-    background-color: var(--main_color);
-    height: 25%;
-    margin:0 0 0 0;
+div#header {
+    background-color: var(--color_main);
+    width: 100%;
+    max-height: 30%;
+    margin:0;
+    padding: 30px  0;
     box-shadow: 0 0 12px 4px rgb(185, 185, 185);
 }
 
-div.window {
-    animation: startAni 1.2s;
-    background-color: var(--window_color);
-    position: absolute;
+img#logo {
+    display: block;
+    height: 100px;
+    width: auto;
+    margin:10px auto;
+    border-radius: 30% ;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+label#title {
+    display: block;
+    text-align: center;    
+    width: 100%;
+    font-size: 30px;
+}
+
+div#window {
+    background-color: var(--color_window);
+    display:block;
+    position: relative;
     width: var(--window_width);
-    height: var(--window_height);
-    min-width: 350px;
-    min-height: 200px;
-    top: calc(var(--window_pos_y) - var(--window_height) *0.5);    
-    left: calc(var(--window_pos_x) - var(--window_width) *0.5);
-    padding: 2px 2px 2px 5px;
+    height: auto;
+    margin: 3% auto 1% auto;
+    padding: 10px 10px 40px 10px;
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: all .7s ease;
+    animation: window_enter 1.3s;
 }
-
-div.window:hover {
+div#window:hover {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     transition: all .7s ease;
 }
 
-
 button.smallButton {
-    margin: 0 1px 0 0;
-    width: 10px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
+    margin-right: 1px;
     border-radius: 65%;
     border-width: 0px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
 }
-button.smallButton:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+button.red{background-color: rgb(254, 118, 110);}
+button.yellow{background-color: rgb(254,198, 76);}
+button.green{background-color: rgb(70, 208, 91);}
+div#smallButtons {position:absolute;}
+
+b#window_title {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
 }
-button.red{background-color: rgb(238, 68, 16);}
-button.yellow{background-color: rgb(238, 243, 0);}
-button.green{background-color: rgb(76, 233, 14);}
 
-label.window_title{margin-left: 33%;font-size:15px;}
-
-label.window_lable{
-    position: relative;
+.window_lable{
     display:inline-block;
     width: 25%;
-    margin:2% 5% 2% 1%;
+    margin:20px 7% 20px 0;
     text-align: right;
-    font-size: 14px;
+    font-size: 16px;
+    animation:  input_enter 1.5s;
 }
 
 input{
-    position: relative;
-    background-color: var(--background_color);
+    background-color: var(--color_background);
+    display: inline-block;
     width: 40%;
-    height: 14%;
-    margin-bottom: 7%;
+    height: 41px;
+    margin: 20px 5px;
     outline-style: none;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 7px 0px;
     transition:all .2s ease;
+    animation: input_enter 1.5s;
 }
 
 input:hover{
@@ -107,11 +112,10 @@ input:hover{
     transition:all .2s ease;
 }
 
-
 .floatButton {
+    background: var(--color_main);
     position: absolute;
     align-items: center;
-    background: var(--main_color);
     border: 0 solid #E2E8F0;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
     color: #1A202C;
@@ -119,31 +123,29 @@ input:hover{
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+    animation: input_enter 2s;
+
 }
 
-.logo{
-    position: relative;
-    top: calc(35% - 50px);    
-    left: calc(50% - 50px);
-    width: 90px;
-    height: 90px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px 0px;
-    border-radius: 20%;
-}
 
-.title{
-    position: relative;
-    top: calc(55% - 50px); 
-    left: calc(50% - 240px);
-    font-size: 25px;
-}
-
-p.tip{
-    animation: startAni 1.5s;
-    display: inline;
-    position: absolute;
+p {
+    display: block;
     text-align: center;
     width: 100%;
-    top:calc(var(--window_pos_y) + var(--window_height)*0.5 + 10px);
-    font-size: 13px;
+    font-size: 15px;
+    animation: input_enter 2.5s;
+
 }
+a{color:var(--color_main);}
+
+
+@keyframes window_enter{
+    0% {transform: translate(300%,0);}
+}
+
+@keyframes input_enter{
+    0% {visibility:hidden;margin: 0;}
+    50%{transform: translate(0,1000px);}
+    51%{visibility:"visible" ;}
+}
+

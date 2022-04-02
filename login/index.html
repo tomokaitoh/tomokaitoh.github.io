@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/loginPage.css" type="text/css"/>    
+    <script src="js/loginPage.js"></script>
+    <title>Login page</title>
+</head>
+
+<body>
+    <div id="header">
+        <img id="logo" src="resources/logo.png"/>
+        <label id="title">website name login page</label>
+    </div>
+
+    <div id="window">
+        <div id="smallButtons">
+            <button class="smallButton red"></button>
+            <button class="smallButton yellow"></button>
+            <button class="smallButton green"></button>
+        </div>
+        <b id="window_title">登录</b>
+        <br/>
+        <br/>
+        <label class="window_lable">用户名:</label>
+        <input id="userName_input"/>
+        <br/>
+        <label class="window_lable">密码:</label>
+        <input id="password_input" type="password"/>
+        <br/>
+        <label class="window_lable"  id="password2_lable" style="display:none;">确认密码:</label>
+        <input id="password2_input" type="password" style="display:none;"/>
+        <button class="floatButton" id="registerButton" style="top:45%;left:80%;display:none;"  onclick="register()">注册</button>
+        <button class="floatButton" id="loginButton" style="top:45%;left:80%;" onclick="login()">登录</button>
+    </div>
+
+    <p id="loginTip">
+        还未注册或忘记密码?
+        <a href="#" onclick="toRegister()">注册</a>
+        <a href="#" onclick="toFindPassword()">找回密码</a>
+    </p>
+    <p id="registerTip" style="display: none;">
+        注册成功?
+        <a href="#" onclick="toLogin()">登录</a>
+        <a href="#" onclick="toFindPassword()">找回密码</a>
+    </p>
+</body>
+</html>
