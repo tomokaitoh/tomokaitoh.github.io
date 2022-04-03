@@ -1,0 +1,160 @@
+:root {
+    --color_main:rgb(135, 181, 196);
+    --color_background:rgb(245,246,247);
+    --color_window:rgb(254,254,254);
+    --color_column:rgb(254,254,254);
+    --color_black:rgb(115,117,131);
+    --color_black_normal:rgb(166,166,166);
+
+    --size_leftColumn:14%;
+    --size_mainContent:64%;
+    --size_rightColumn:22%;
+    --size_topColumn:5%;
+}
+
+
+@font-face {
+    font-family: "ProFontWindows";
+    src: url("../resources/ProFontWindows.ttf");
+}
+
+::-webkit-scrollbar {display: none;}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden ;
+}
+
+body{
+    background-color: var(--color_background);
+    height: 100%;
+    min-height: 600px;
+    min-width: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+div#leftColumn {
+    background-color: var(--color_column);
+    position: fixed;
+    width: var(--size_leftColumn);
+    height: 100%;
+    margin: 0;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+#leftColumn>a {
+    display:block;
+    margin:10px 0px 15px 20px;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+b#logo {
+    color:var(--color_main);
+    display: block;
+    text-align: center;
+    font-family: "ProFontWindows";
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin:25px auto;
+}
+
+.smallTitle {
+    display: block;
+    color: var(--color_black);
+    margin: 22px 5px;
+}
+
+.aColumnButton {
+    background-color: var(--color_column);
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    height: auto;
+    margin: 20px 0px;
+    padding:3px 20px;
+    font-size: 15px;
+    outline: none;
+    border: 0px;
+}
+
+.aColumnButton:hover {
+    background-color: var(--color_background);
+}
+
+.aColumnButton>img {
+    height: 20px;
+    margin-right: 4px;
+}
+
+.clickableText{color:var(--color_black_normal);}
+.clickableText:hover{color:var(--color_main);cursor:pointer;}
+
+div#topColumn{
+    background-color: var(--color_column);
+    position: fixed;
+    width: 100%;
+    height: var(--size_topColumn);
+}
+
+div#rightColumn {
+    background-color: var(--color_column);
+    position:fixed;
+    left:calc(100% - var(--size_rightColumn));
+    width: var(--size_rightColumn);
+    height: 100%;
+    margin: 0;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+div#mainContent{
+    position: absolute;
+    left:var(--size_leftColumn);
+    top:var(--size_topColumn);
+    width: var(--size_mainContent);
+    height: 100%;
+}
+
+div.window {
+    background-color: var(--color_window);
+    display:block;
+    width: calc(100%  - 40px);
+    height: 40%;
+    margin: 2% auto 2% auto;
+    padding: 10px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .7s ease;
+}
+div.window:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    transition: all .7s ease;
+}
+
+@media screen and (max-width:1030px) {
+    :root{--size_leftColumn:8%;--size_mainContene:66%;--size_rightColumn:26%;}
+    b#logo{visibility: hidden;}
+    #leftColumn{padding: 1px 3px;}
+    #leftColumn>.smallTitle{text-align: center;}
+    #leftColumn>a{display: none;}
+    .aColumnButton{display: block;font-size: 13px;padding: 0;}
+    .aColumnButton>img{display:block;height:30px;padding: 0;margin:2px auto;}
+}
+
+@media screen and (max-width:780px) {
+    :root{--size_leftColumn:0;--size_mainContene:66%;--size_rightColumn:34%;}
+    div#leftColumn{display:none;}
+}
+
+@media screen and (max-width:600px) {
+    :root{--size_mainContene:100%;--size_rightColumn:0;}
+    div#rightColumn{display:none;}
+}
