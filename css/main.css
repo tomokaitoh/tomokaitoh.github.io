@@ -3,13 +3,14 @@
     --color_background:rgb(245,246,247);
     --color_window:rgb(254,254,254);
     --color_column:rgb(254,254,254);
+    --color_floatButton:rgb(250,250,250);
     --color_black:rgb(115,117,131);
     --color_black_normal:rgb(166,166,166);
 
-    --size_leftColumn:14%;
-    --size_mainContent:64%;
-    --size_rightColumn:22%;
-    --size_topColumn:5%;
+    --size_leftColumn:calc(14vw);
+    --size_mainContent:calc(64vw);
+    --size_rightColumn:calc(22vw);
+    --size_topColumn:32px;
 }
 
 
@@ -17,6 +18,8 @@
     font-family: "ProFontWindows";
     src: url("../resources/ProFontWindows.ttf");
 }
+
+@keyframes floatButtonTip {0% {opacity:0;transform: translate(100%,0);}}
 
 ::-webkit-scrollbar {display: none;}
 
@@ -45,6 +48,7 @@ div#leftColumn {
     padding: 1px 10px;
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    transition: all .5s ease;
 }
 
 #leftColumn>a {
@@ -123,6 +127,7 @@ div#mainContent{
     top:var(--size_topColumn);
     width: var(--size_mainContent);
     height: 100%;
+    
 }
 
 div.window {
@@ -143,8 +148,8 @@ div.window:hover {
     transition: all .7s ease;
 }
 
-div.window>img.backgroud{
-    opacity: 80%;
+#personalIntroduce>img.background{
+    opacity: 75%;
     display: block;
     position: relative;
     width: 100%;
@@ -155,12 +160,12 @@ div.window>img.backgroud{
     object-fit: cover;
     transition: all 2s ease;
 }
-div.window>img.backgroud:hover{
+#personalIntroduce>img.background:hover{
     filter: blur(4px);
     transition: all 2s ease;
 }
 
-img.headIcon{
+#personalIntroduce>img.headIcon{
     display: block;
     position:absolute;
     bottom: 15%;
@@ -170,7 +175,7 @@ img.headIcon{
     border-radius: 60%;
     box-shadow: rgba(255, 255, 255, 0.9) 0px 0px 2px 4px;
 }
-b.name{
+#personalIntroduce>b.name{
     color:aliceblue;
     display: block;
     position:absolute;
@@ -179,6 +184,17 @@ b.name{
     height: 80px;
     font-size: 25px;
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
+}
+
+#personalIntroduce>p.sign{
+    color:aliceblue;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top:25%;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2)
 }
 
 button.smallButton {
@@ -202,9 +218,47 @@ b#windowTitle {
     font-size: 17px;
     word-spacing: 2px;
 }
+button.floatButton{
+    background-color: var(--color_floatButton);
+    position: fixed;
+    right: 0;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+    border-radius: 50%;
+    border:2px solid var(--color_background);
+    z-index: 2;
+    cursor:pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    animation: floatButtonTip .7s;
+}
+button.floatButton>img{
+    opacity: 40%;
+    width: 70%;
+    height: auto;
+}
+button.floatButton>b.tip{
+    background-color: var(--color_window);
+    color:var(--color_main);
+    position: absolute;
+    display: none;
+    left: -120%;
+    top: 30%;
+    height:50%;
+    padding: 2px 5px;
+    font-size: 15px;
+    border: 2px solid var(--color_main);
+    border-radius: 2px;
+    border-bottom-right-radius: 10px;
+    animation: floatButtonTip .7s;
+}
+
+button.floatButton:hover .tip{display:block;}
+button.floatButton:hover img{opacity: 60%;}
 
 @media screen and (max-width:1030px) {
-    :root{--size_leftColumn:8%;--size_mainContent:66%;--size_rightColumn:26%;}
+    :root{--size_leftColumn:calc(8vw);--size_mainContent:calc(66vw);--size_rightColumn:calc(26vw);}
     b#logo{visibility: hidden;}
     #leftColumn{padding: 1px 3px;}
     #leftColumn>.smallTitle{text-align: center;}
@@ -214,11 +268,17 @@ b#windowTitle {
 }
 
 @media screen and (max-width:780px) {
-    :root{--size_leftColumn:0;--size_mainContent:66%;--size_rightColumn:34%;}
-    div#leftColumn{display:none;}
+    :root{--size_leftColumn:0;--size_mainContent:calc(66vw);--size_rightColumn:calc(34vw);--size_topColumn:0;}
+    .aColumnButton{display:inline-block;}
+    #topColumn{display: none;}
+    div#leftColumn{display: inline-flex;width: 66%;z-index: 1;height: auto;bottom:0;left:0;}
+    .aColumnButton{margin: 2px;font-size: 10px;}
+    .aColumnButton>img{height: 15px;}
+    div#leftColumn>b{display: none;}
 }
 
 @media screen and (max-width:650px) {
-    :root{--size_mainContent:100%;--size_rightColumn:0;}
+    :root{--size_mainContent:calc(100vw);--size_rightColumn:0;}
     div#rightColumn{display:none;}
+    div#leftColumn{width: 100%;}
 }
