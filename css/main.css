@@ -11,6 +11,9 @@
     --size_mainContent:calc(64vw);
     --size_rightColumn:calc(22vw);
     --size_topColumn:32px;
+
+    --cursor_normal:url("../resources/cursor/Normal.cur");
+    --cursor_pointer:url("../resources/cursor/Link.cur");
 }
 
 
@@ -22,6 +25,9 @@
 @keyframes floatButtonTip {0% {opacity:0;transform: translate(100%,0);}}
 
 ::-webkit-scrollbar {display: none;}
+body{cursor: var(--cursor_normal),default;}
+button,button>*{cursor: var(--cursor_pointer),pointer;}
+
 
 html {
     height: 100%;
@@ -85,6 +91,7 @@ b#logo {
     font-size: 15px;
     outline: none;
     border: 0px;
+    border-radius: 10%;
 }
 
 .aColumnButton:hover {
@@ -97,7 +104,7 @@ b#logo {
 }
 
 .clickableText{color:var(--color_black_normal);}
-.clickableText:hover{color:var(--color_main);cursor:pointer;}
+.clickableText:hover{color:var(--color_main);cursor: var(--cursor_pointer),pointer;}
 
 div#topColumn{
     background-color: var(--color_column);
@@ -186,6 +193,16 @@ div.window:hover {
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
 }
 
+#personalIntroduce>b.name>b.tag{
+    background-color:var(--color_main);    
+    display:inline;
+    position: relative;
+    top:-7px;
+    padding: 1px 2px;
+    font-size: 5px;
+    border-radius: 10%;
+}
+
 #personalIntroduce>p.sign{
     color:aliceblue;
     display: block;
@@ -210,26 +227,31 @@ button.green{background-color: rgb(70, 208, 91);}
 div.smallButtons {position:absolute;}
 
 b#windowTitle {
-    color: var(--color_black);
+    color: var(--color_main);
     display: inline-block;
     text-align: center;
     width: 100%;
     margin: 10px;
     font-size: 17px;
-    word-spacing: 2px;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+}
+div#floatButtons{
+    position: fixed;
+    bottom:50px;
+    right:0;
+    padding: 10px;
+    z-index: 2;
 }
 button.floatButton{
     background-color: var(--color_floatButton);
-    position: fixed;
-    right: 0;
-    bottom: 50px;
+    display: block;
+    position: relative;
     width: 50px;
     height: 50px;
-    margin: 30px;
+    margin: 20px;
     border-radius: 50%;
     border:2px solid var(--color_background);
-    z-index: 2;
-    cursor:pointer;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     animation: floatButtonTip .7s;
 }
@@ -257,6 +279,79 @@ button.floatButton>b.tip{
 button.floatButton:hover .tip{display:block;}
 button.floatButton:hover img{opacity: 60%;}
 
+div#articleContainer{
+    display: grid;
+    position: relative;
+    margin: 10px;
+    grid-template-rows: repeat(auto,minmax(300px,1fr));
+    grid-template-columns: repeat(3,33.3%);
+}
+
+div.articleDisplay{
+    min-height: 100px;
+    margin: 3%;
+    border: var(--color_main) solid 1px;
+    border-radius: 2px;
+    border-bottom-right-radius: 20px;
+    
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    
+    transition: all .7s;
+    cursor: var(--cursor_pointer),pointer;
+}
+
+div.articleDisplay:hover{transition: all .7s;}
+
+div.articleDisplay>b.title{
+    color:var(--color_black);
+    display:-webkit-box;
+    margin: 12px;
+    font-size:14px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    cursor: var(--cursor_pointer),pointer;
+}
+
+div.articleDisplay>p.article{
+    color:var(--color_black_normal);
+    display:-webkit-box;
+    margin: 12px;
+    font-size:10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 15;
+    -webkit-box-orient: vertical;
+    cursor: var(--cursor_pointer),pointer;
+}
+div.articleDisplay>b.title:hover{color:var(--color_main);}
+div.articleDisplay:hover .title{color:var(--color_main);}
+
+div#pageSelecter{
+    display: flex;
+    justify-content: center;
+    vertical-align:middle;
+    width: 100%;
+    height: auto;
+    padding: 10px 10%;
+    box-sizing: border-box;
+}
+
+button.page{
+    background-color: var(--color_window);
+    color:var(--color_main);
+    height:40px;
+    padding: auto 5px;
+    margin: auto 5px;
+    font-size: 15px;
+    border: 2px solid var(--color_main);
+    border-radius: 4px;
+    transition: all .3s ease;
+}
+button.page:hover{background-color: var(--color_main);color:var(--color_window);transition: all .3s ease;}
+
 @media screen and (max-width:1030px) {
     :root{--size_leftColumn:calc(8vw);--size_mainContent:calc(66vw);--size_rightColumn:calc(26vw);}
     b#logo{visibility: hidden;}
@@ -265,6 +360,7 @@ button.floatButton:hover img{opacity: 60%;}
     #leftColumn>a{display: none;}
     .aColumnButton{display: block;font-size: 13px;padding: 0;}
     .aColumnButton>img{display:block;height:30px;padding: 0;margin:2px auto;}
+    div#articleContainer{grid-template-columns: repeat(2,50%);}
 }
 
 @media screen and (max-width:780px) {
@@ -272,13 +368,15 @@ button.floatButton:hover img{opacity: 60%;}
     .aColumnButton{display:inline-block;}
     #topColumn{display: none;}
     div#leftColumn{display: inline-flex;width: 66%;z-index: 1;height: auto;bottom:0;left:0;}
-    .aColumnButton{margin: 2px;font-size: 10px;}
-    .aColumnButton>img{height: 15px;}
+    .aColumnButton{margin: 2px;font-size: 12px;}
+    .aColumnButton>img{height: 20px;}
     div#leftColumn>b{display: none;}
+    div#articleContainer{grid-template-columns: repeat(1,100%);}
 }
 
 @media screen and (max-width:650px) {
     :root{--size_mainContent:calc(100vw);--size_rightColumn:0;}
     div#rightColumn{display:none;}
     div#leftColumn{width: 100%;}
+    div#articleContainer{grid-template-columns: repeat(2,50%);}
 }

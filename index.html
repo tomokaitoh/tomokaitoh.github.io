@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="ch">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8"/> 
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+    <script src="scripts/main.js"></script>
 </head>
+<script>
+    getQueryVariables();
+    console.log(parameters);
+</script>
 <body>
-    <button class="floatButton">
-        <img src="resources\\icons1\\分享.png"/>
-        <b class="tip">菜单</b>
-    </button>
+    <div id="floatButtons">
+        <button class="floatButton" onclick="javascript:history.go(-1)">
+            <img src="resources\\icons1\\返回.png"/>
+            <b class="tip">返回</b>
+        </button>
+        <button class="floatButton">
+            <img src="resources\\icons1\\分享.png"/>
+            <b class="tip">菜单</b>
+        </button>
+        </button>
+    </div>
+    
     <div id="topColumn">
     </div>
+
     <div id="leftColumn">
         <b id="logo">tomoka</b>
         <b class="smallTitle">选项</b>
@@ -18,7 +33,7 @@
             <img src="resources/icons2/r7.ico"/>首页
         </button>
         <button class="aColumnButton clickableText">
-            <img src="resources/icons2/r1.ico"/>个人中心
+            <img src="resources/icons2/r1.ico"/>写文章
         </button>
         <button class="aColumnButton clickableText">
             <img src="resources/icons2/r3.ico"/>管理
@@ -33,28 +48,41 @@
         <a class="clickableText" href="https://github.com/tomokaitoh" target="_blank">tomokaitoh的github</a>
         <a class="clickableText" href="https://github.com/tomokaitoh" target="_blank">tomokaitoh.top</a>
     </div>
+
     <div id="mainContent">
         <div class="window" id="personalIntroduce">
             <img class="background" src="resources\\img\\background1.jpg"/>
             <img class="headIcon"src="resources\\img\\headIcon.bmp"/>
-            <b class="name">Tomoka-Itoh</b>
+            <b class="name">
+                Tomoka-Itoh
+                <b class="tag">tomoka</b>
+            </b>
             <p class="sign">你是爱, 是暖, 是希望, 你是人间的四月天 .</p>
             <div style="height: calc(5vh);">
             
             </div>
         </div>
-        <div class="window" style="height: 300%;">
+
+        <div class="window">
             <div class="smallButtons">
                 <button class="smallButton red"/>
                 <button class="smallButton yellow"/>
                 <button class="smallButton green"/>  
             </div>
-            <b id="windowTitle">个人中心</b>
+            <b id="windowTitle">首页</b>
+            <div id="articleContainer">
+            </div>
+            <div id="pageSelecter">
+            </div>
         </div>
-    </div>
-    <div id="rightColumn">
-        
+        <br/><br/>
     </div>
 
+    <div id="rightColumn">
+        <b class="smallTitle">导航</b>
+    </div>
+    <script>
+        getArticleSummarize();
+    </script>
 </body>
 </html>
