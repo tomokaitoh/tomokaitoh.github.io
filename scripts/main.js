@@ -2,7 +2,7 @@ var articlePath = "./datas/articles/";
 var parameters = {
     table : "index",
     page : 0,
-    maxArticlesNum: 10
+    maxArticlesNum: 12
 };
 
 
@@ -39,12 +39,36 @@ function getQueryVariables(){
     }
 }
 
+
 function openArticle(id){
     alert(id);
 }
+
+function getElementAbsYPos(e) {
+    var t = e.offsetTop;
+    while(e = e.offsetParent)
+        t += e.offsetTop;
+    return t;
+}
+
 function gotoPage(page){
     window.location.href = "http://" + window.location.host +"/?page=" + page;
 }
+
+function navigateTo(id){
+    var element = document.getElementById(id);
+    window.scrollTo({
+        left:0,
+        top:getElementAbsYPos(element) -50,
+        behavior:"smooth"
+    });
+    element.style.animation = "twinkleAni 1.5s";
+    element.addEventListener("animationend",function(){
+        $(this).css("animation","");
+    });
+    //document.getElementById(id).scrollIntoView({block:'start',behavior: 'smooth'});
+}
+
 function separateArticlePages(data){
     var container = document.getElementById("pageSelecter");
     var contentFormat = "<button class=\"page\" onclick=\"gotoPage({0});\">{1}</button>";
@@ -56,22 +80,35 @@ function separateArticlePages(data){
         if(i==parameters.page)  container.lastChild.style = "border:none;";
     }
     if(parameters.page != pageNum) container.innerHTML += formatString(contentFormat,parameters.page+1,"下一页");
-    }
+}
 
 function getArticleSummarize(){
     var container = document.getElementById("articleContainer");
+    var navigationContainer = document.getElementById("navigation");
     var contentFormat = 
         "<div class='articleDisplay' onclick=\"openArticle({id})\">"+
-        "<b class='title'>{title}</b>"+
+        "<b class='articleDisplay title' id=\"title{id}\">{title}</b>"+
         "<p class='article'>{content}</p>"+
         "</div>";
+    //傻逼jquery, 默认异步执行getJson,在这卡了半天...
+    $.ajaxSettings.async = false;
     $.getJSON(articlePath + "summarize.json",function(data){
         var start = Math.min(data.length-1,parameters.page*parameters.maxArticlesNum);
         var end = Math.min(start+parameters.maxArticlesNum,data.length);
-        for(var i= start;i<end;++i){
+        for(var i= start;i<end;++i)
             container.innerHTML += formatString(contentFormat,data[i]);
-        }
         separateArticlePages(data);
     });
 }
 
+
+function getNavigation(){
+    var navigationContainer = document.getElementById("navigation");
+    var contentFormat = "<b class='title' onclick='navigateTo(\"{0}\");'>{1}</b>";
+    if(parameters.table="index"){
+        $(".articleDisplay .title").each(function(){
+            navigationContainer.innerHTML += formatString(contentFormat,this.id,this.innerHTML);
+        });
+    }
+
+}
