@@ -24,6 +24,7 @@
 }
 
 @keyframes floatButtonTip {0% {opacity:0;transform: translate(100%,0);}}
+@keyframes twinkleAni{50% {color:var(--color_main_light);};}
 
 ::-webkit-scrollbar {display: none;}
 body{cursor: var(--cursor_normal),default;}
@@ -79,7 +80,7 @@ b#logo {
 .smallTitle {
     display: block;
     color: var(--color_black);
-    margin: 22px 5px;
+    margin: 22px 5px 10px 5px;
 }
 
 .aColumnButton {
@@ -125,6 +126,7 @@ div#rightColumn {
     height: 100%;
     margin: 0;
     padding: 1px 10px;
+    overflow-y: scroll;
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     transform: all .7s ease;
@@ -195,6 +197,15 @@ div.window:hover {
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
 }
 
+#personalIntroduce>p.diffTime{
+    color:aliceblue;
+    display: block;
+    position:absolute;
+    bottom: calc(15% + 10px);
+    left: 115px;
+    font-size: 13px;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
+}
 #personalIntroduce>b.name>b.tag{
     background-color:var(--color_main);    
     display:inline;
@@ -230,10 +241,14 @@ div.smallButtons {position:absolute;}
 
 b#windowTitle {
     color: var(--color_main);
-    display: inline-block;
+    display: -webkit-box;
     text-align: center;
-    width: 100%;
-    margin: 10px;
+    width: 70%;
+    margin: 10px auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     font-size: 17px;
     word-spacing: 1px;
     letter-spacing: 1px;
@@ -353,25 +368,64 @@ button.page:hover{background-color: var(--color_main);color:var(--color_window);
 div#navigation>b.title{
     color:var(--color_black);
     display:-webkit-box;
-    margin: 0px 15% 10px 10%;
+    margin: 0px 7% 10px 10%;
     padding-left:10px;
     font-size:13px;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     border-radius: 2px;
     border-left: 4px solid var(--color_main_light);
     cursor: var(--cursor_pointer),pointer;
 }
 
-@keyframes twinkleAni{
-    50% {color:var(--color_main_light);};
+
+
+div#article{
+    display: none;
+    font-size: 16px;
+    color:var(--color_black);
+    padding: 15px 30px;
+    box-sizing: border-box;
+}
+red{color: rgb(254, 118, 110);}
+yellow{color: rgb(254,198, 76);}
+green{color: rgb(70, 208, 91);}
+
+#article>pre>code{
+    display: block;
+    padding: 5px;
+    border-radius:10px;
+    box-sizing: border-box;
+    border: 3px solid var(--color_main_light);
+}
+#article>p>code{
+    display: inline-block;
+    padding: 2px;
+    border-radius:4px;
+    box-sizing: border-box;
+    border: 3px solid var(--color_main_light);
+}
+blockquote{
+    color:var(--color_black);
+    margin-left: 2px;
+    padding-left:5px;
+    border-radius: 2px;
+    border-left: 4px solid var(--color_main_light);
 }
 
-.twinkle{
-    animation: twinkleAni 1s;
-}
+hr{border-color:var(--color_main_light);}
 
+#article>p>a{
+    color:var(--color_main);
+    text-decoration: none;
+    transition: all .7s linear;
+}
+#article>p>a:hover{
+    text-decoration:underline 4px solid var(--color_main_light);
+    transition: all .7s linear;
+}
 
 @media screen and (max-width:1030px) {
     :root{--size_leftColumn:calc(8vw);--size_mainContent:calc(66vw);--size_rightColumn:calc(26vw);}

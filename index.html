@@ -4,11 +4,11 @@
     <meta charset="utf-8"/> 
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/marked.js"></script>
     <script src="scripts/main.js"></script>
 </head>
 <script>
-    getQueryVariables();
-    console.log(parameters);
+
 </script>
 <body>
     <div id="floatButtons">
@@ -29,7 +29,7 @@
     <div id="leftColumn">
         <b id="logo">tomoka</b>
         <b class="smallTitle">选项</b>
-        <button class="aColumnButton clickableText">
+        <button class="aColumnButton clickableText" onclick="window.location.href = 'http://'  + window.location.host;">
             <img src="resources/icons2/r7.ico"/>首页
         </button>
         <button class="aColumnButton clickableText">
@@ -51,13 +51,11 @@
 
     <div id="mainContent">
         <div class="window" id="personalIntroduce">
-            <img class="background" src="resources\\img\\background1.jpg"/>
-            <img class="headIcon"src="resources\\img\\headIcon.bmp"/>
-            <b class="name">
-                Tomoka-Itoh
-                <b class="tag">tomoka</b>
-            </b>
-            <p class="sign">你是爱, 是暖, 是希望, 你是人间的四月天 .</p>
+            <img class="background"/>
+            <img class="headIcon"/>
+            <b class="name"></b>
+            <p class="sign"></p>
+            <p class="diffTime"></p>
             <div style="height: calc(5vh);">
             
             </div>
@@ -65,11 +63,13 @@
 
         <div class="window">
             <div class="smallButtons">
-                <button class="smallButton red"/>
+                <button class="smallButton red" onclick="parameters.markdown=!parameters.markdown;getArticle();"/>
                 <button class="smallButton yellow"/>
                 <button class="smallButton green"/>  
             </div>
             <b id="windowTitle">首页</b>
+            <div id="article">
+            </div>
             <div id="articleContainer">
             </div>
             <div id="pageSelecter">
@@ -87,7 +87,12 @@
 
 </body>
 <script>
-    getArticleSummarize();
+    getQueryVariables();
+    console.log(parameters);
+    getUserInfo();
+    if(parameters.table == "index")  getArticleSummarize();
+    if(parameters.table == "article")  getArticle();
     getNavigation();
+    //setTimeout(getNavigation, 2000);
 </script>
 </html>
