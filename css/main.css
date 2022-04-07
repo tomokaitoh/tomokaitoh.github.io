@@ -104,7 +104,7 @@ b#logo {
     margin-right: 4px;
 }
 
-.clickableText{color:var(--color_black_normal);}
+.clickableText{color:var(--color_black_normal);border: none;background-color: inherit;}
 .clickableText:hover{color:var(--color_main);cursor: var(--cursor_pointer),pointer;}
 
 div#topColumn{
@@ -158,10 +158,11 @@ div.window:hover {
 
 div#personalIntroduce{
     height: 35vh;
+    overflow: hidden;
 }
 
 img.background{
-    opacity: 75%;
+    opacity: 70%;
     display: block;
     position: absolute;
     top:0;
@@ -175,17 +176,20 @@ img.background{
     transition: all 2s ease;
 }
 
-img.background:hover{
+#personalIntroduce:hover img.background{
     filter: blur(4px);
     transition: all 2s ease;
 }
-
+#personalIntroduce>*>*>.clickableText{
+    height: 5.4vh;
+    padding: auto;
+    margin-right: 2%;
+    font-size: 0.9em;
+}
 img.headIcon{
     display: inline-block;
-    height: 90%;
-    width: auto;
-    max-height: 80px;
-    margin: 1% 2%;
+    height: 80px;
+    margin: 0 2%;
     border-radius: 60%;
     box-shadow: rgba(255, 255, 255, 0.9) 0px 0px 2px 4px;
 }
@@ -194,6 +198,7 @@ b.name{
     color:aliceblue;
     display: inline-block;
     height: 100%;
+    margin: 1px 0;
     font-size: 1.4em;
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
 }
@@ -202,7 +207,7 @@ p.diffTime{
     color:aliceblue;
     display: block;
     font-size: 0.8em;
-    margin: 1px;
+    margin: 1px 2px;
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
 }
 
@@ -461,9 +466,11 @@ hr{border-color:var(--color_main_light);}
     div.smallButtons{display: none;}
     .aColumnButton{font-size: 0.7em;}
     b.name{font-size: 1.2em;}
-    b.name>b.tag{font-size: 0.2em;}
+    b.name>b.tag{font-size: 0.4em;}
     div#personalIntroduce{height: 25vh;}
     p.sign{font-size: 0.9em;}
     b#windowTitle{font-size: 0.8em;}
     div#article{font-size: 0.7em;margin: 0;}
+    img.headIcon{height: 60px;}
+    #personalIntroduce>*>*>.clickableText{height: 4vh;font-size: 0.4em;}
 }
