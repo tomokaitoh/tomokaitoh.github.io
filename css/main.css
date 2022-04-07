@@ -463,14 +463,16 @@ hr{border-color:var(--color_main_light);}
 }
 
 @media screen and (max-width:500px) {
+    div.window{width: calc(100%  - 10px);}
     div.smallButtons{display: none;}
     .aColumnButton{font-size: 0.7em;}
     b.name{font-size: 1.2em;}
     b.name>b.tag{font-size: 0.4em;}
     div#personalIntroduce{height: 25vh;}
-    p.sign{font-size: 0.9em;}
+    p.sign{font-size: 0.8em;}
+    p.diffTime{font-size:0.7em;}
     b#windowTitle{font-size: 0.8em;}
     div#article{font-size: 0.7em;margin: 0;}
     img.headIcon{height: 60px;}
-    #personalIntroduce>*>*>.clickableText{height: 4vh;font-size: 0.4em;}
+    #personalIntroduce>*>*>.clickableText{height: 4vh;font-size: 0.6em;}
 }

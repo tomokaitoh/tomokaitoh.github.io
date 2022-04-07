@@ -149,6 +149,7 @@ function getArticleSummarize(){
     //傻逼jquery, 默认异步执行getJson,在这卡了半天...
     $.ajaxSettings.async = false;
     $.getJSON(articlePath + "summarize.json",function(data){
+        document.getElementById("personalIntroduce").getElementsByClassName("clickableText")[0].innerHTML = data.length + "文章";
         var start = Math.min(data.length-1,parameters.page*parameters.maxArticlesNum);
         var end = Math.min(start+parameters.maxArticlesNum,data.length);
         for(var i= start;i<end;++i)
