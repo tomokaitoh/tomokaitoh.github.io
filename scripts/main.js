@@ -183,10 +183,16 @@ function getUserInfo(){
     $.ajaxSettings.async = false;
     var container = document.getElementById("personalIntroduce");
     $.getJSON(dataPath + "userInfo.json",function(data){
-        container.children[0].src = data['background'];
-        container.children[1].src = data['headIcon'];
-        container.children[2].innerHTML = data['name'] + " <b class=\"tag\">"+ data['tag'] +"</b>"
-        container.children[3].innerHTML = data['sign'];
-        container.children[4].innerHTML = "已注册 " + diffTimeStr(data['registerTime']);
+        container.getElementsByClassName("background")[0].src =  data['background'];
+        container.getElementsByClassName("headIcon")[0].src =  data['headIcon'];
+        container.getElementsByClassName("name")[0].innerHTML =  data['name'] + " <b class=\"tag\">"+ data['tag'] +"</b>";
+        container.getElementsByClassName("sign")[0].innerHTML =  data['sign'];
+        container.getElementsByClassName("diffTime")[0].innerHTML =  "已注册 " + diffTimeStr(data['registerTime']);
+
+        //container.children[0].src = data['background'];
+        //container.children[1].src = data['headIcon'];
+        //container.children[2].innerHTML = data['name'] + " <b class=\"tag\">"+ data['tag'] +"</b>"
+        //container.children[3].innerHTML = data['sign'];
+        //container.children[4].innerHTML = "已注册 " + diffTimeStr(data['registerTime']);
     });
 }

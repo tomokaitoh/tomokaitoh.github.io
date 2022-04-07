@@ -2,6 +2,8 @@
 <html lang="ch">
 <head>
     <meta charset="utf-8"/> 
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="height=device-height,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <script src="scripts/jquery.min.js"></script>
     <script src="scripts/marked.js"></script>
@@ -46,16 +48,22 @@
         </button>
         <b class="smallTitle">链接</b>
         <a class="clickableText" href="https://github.com/tomokaitoh" target="_blank">tomokaitoh的github</a>
-        <a class="clickableText" href="https://github.com/tomokaitoh" target="_blank">tomokaitoh.top</a>
+        <a class="clickableText" href="https://tomokaitoh.top" target="_blank">tomokaitoh.top</a>
     </div>
 
     <div id="mainContent">
         <div class="window" id="personalIntroduce">
             <img class="background"/>
-            <img class="headIcon"/>
-            <b class="name"></b>
             <p class="sign"></p>
-            <p class="diffTime"></p>
+            <div style="position: relative;display:block;height: 35%;box-sizing: border-box;">
+                <img class="headIcon"/>
+                <div style="display:inline-block;position:relative;bottom:15%;">
+                    <b class="name"></b>
+                    <p class="diffTime"></p>
+                </div>
+                
+            </div>
+
             <div style="height: calc(5vh);">
             
             </div>
@@ -63,7 +71,7 @@
 
         <div class="window">
             <div class="smallButtons">
-                <button class="smallButton red" onclick="parameters.markdown=!parameters.markdown;getArticle();"/>
+                <button class="smallButton red" onclick="parameters.markdown=!parameters.markdown;if(parameters.table=='article') getArticle();"/>
                 <button class="smallButton yellow"/>
                 <button class="smallButton green"/>  
             </div>
@@ -91,7 +99,9 @@
     console.log(parameters);
     getUserInfo();
     if(parameters.table == "index")  getArticleSummarize();
-    if(parameters.table == "article")  getArticle();
+    if(parameters.table == "article"){
+        getArticle();
+    }
     getNavigation();
     //setTimeout(getNavigation, 2000);
 </script>
