@@ -212,7 +212,7 @@ b.name>b.tag{
     position: relative;
     top:-3%;
     padding: 1px 2px;
-    font-size: 5px;
+    font-size: 0.4em;
     border-radius: 10%;
 }
 
@@ -459,5 +459,11 @@ hr{border-color:var(--color_main_light);}
 
 @media screen and (max-width:500px) {
     div.smallButtons{display: none;}
-    .aColumnButton{font-size: 1em;}
+    .aColumnButton{font-size: 0.7em;}
+    b.name{font-size: 1.2em;}
+    b.name>b.tag{font-size: 0.2em;}
+    div#personalIntroduce{height: 25vh;}
+    p.sign{font-size: 0.9em;}
+    b#windowTitle{font-size: 0.8em;}
+    div#article{font-size: 0.7em;margin: 0;}
 }
